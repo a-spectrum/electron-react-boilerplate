@@ -1,0 +1,30 @@
+.card--container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 22px;
+    width: 500px;
+}
+
+.button {
+    height: 20px;
+    width: 20px;
+}
+
+.cardRarity {
+    font-size: 12px;
+    margin-right: 6px;
+}
+
+.cardNumber {
+    font-size: 12px;
+    margin-right: 6px;
+    width: 30px;
+    color: black;
+}
+
+.cardName {
+    width: 380px;
+    color: black;
+    font-size: 12px;
+}

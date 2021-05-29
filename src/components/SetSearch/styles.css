@@ -1,0 +1,10 @@
+.searchbar {
+    padding: 27px;
+    margin: 20px;
+    height: 40px;
+    width: 480px;
+    font-size: 106%;
+    background-color: #F5F5F6;
+    border-radius: 40px;
+    cursor: pointer;
+}

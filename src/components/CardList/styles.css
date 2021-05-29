@@ -1,0 +1,9 @@
+.cardList {
+    width: 100%;
+}
+
+.downloadPdfButton {
+    height: 30px;
+    width: 140px;
+    border-radius: 8px;
+}

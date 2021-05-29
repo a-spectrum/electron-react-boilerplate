@@ -1,0 +1,24 @@
+.pdf-header, .pdf-header-space,
+.pdf-footer, .pdf-footer-space {
+    height: 100px;
+}
+.pdf-header {
+    position: fixed;
+    top: 0;
+}
+.pdf-footer {
+    position: fixed;
+    bottom: 0;
+}
+
+@media screen {
+    :host {
+        display: none;
+    }
+}
+
+@media print {
+    #root > * { display: none; }
+    .pdf-header, .pdf-header-space,
+    .pdf-footer, .pdf-footer-space  { display: block; }
+}

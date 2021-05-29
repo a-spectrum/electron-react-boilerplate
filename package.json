@@ -3,19 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-pdf/renderer": "^2.0.12",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "electron-is-dev": "^2.0.0",
+    "pouchdb": "^7.2.2",
+    "pouchdb-find": "^7.2.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-to-print": "^2.12.4",
+    "redux": "^4.1.0",
+    "redux-observable": "^1.2.0",
     "sqlite3": "^5.0.2",
     "web-vitals": "^1.0.1"
   },
   "dist-all": "electron-builder -mw",
   "author": "Maisie Klaassen",
-  "description": "BLablabla",
+  "description": "Magic the Gathering Card Administrative Tool",
   "main": "public/electron.js",
   "homepage": "./",
   "scripts": {
@@ -67,17 +75,16 @@
     },
     "extraResources": [
       {
-        "from": "./db/",
+        "from": "./public/db/",
         "to": "db/",
         "filter": [
-          "**/*"
+          "**/**/*"
         ]
       }
     ],
     "win": {
-      "icon": "./build/images/appicon.ico",
+      "icon": "./build/favicon/appicon.ico",
       "target": [
-        "7z",
         "portable",
         "msi"
       ]

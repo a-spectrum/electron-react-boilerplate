@@ -1,40 +1,32 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
+import React, {Fragment, useEffect, useRef, useState} from 'react';
 import './App.css';
+import SetSearch from "./components/SetSearch";
+import SearchBar from "./components/SearchBar";
+import {useSelector} from "react-redux";
+import SetList from "./components/SetList";
+import CardList from "./components/CardList";
+import {loadSetsInDb, testImage} from "./resources/MTG_API";
+import PdfPrinter from "./components/PdfPrinter";
+import ReactToPrint, {useReactToPrint} from "react-to-print";
 
 const App = () => {
+    const {showView} = useSelector(state => state.application);
 
-  const [dbInfo, setDbInfo] = useState(null);
+    useEffect(() => {
+        loadSetsInDb().then();
+    }, [])
 
-  const handler = async(e) => {
-    const data = await window.api.getSetInfo({});
-    data !== undefined && setDbInfo(data);
-  }
-
-  console.log(dbInfo);
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <button onClick={() => {handler()}}>Test test</button>
-
-        {dbInfo !== null && <h1 style={{color:'#FFF'}}>{dbInfo[0].name}</h1>}
-
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const componentToPrint = useRef();
+    const handlePrint = useReactToPrint({
+        content: () => componentToPrint.current,
+    });
+    return <Fragment>
+        <SearchBar/>
+        {showView === 'SETLIST' && <SetList />}
+        {showView === 'CARDLIST' &&
+        <button onClick={handlePrint}>Print this out!</button>}
+        {showView === 'CARDLIST' && <CardList innerRef={componentToPrint} />}
+    </Fragment>
 }
 
 export default App;
